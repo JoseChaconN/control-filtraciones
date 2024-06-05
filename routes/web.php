@@ -25,6 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/alerts', [DashboardController::class, 'alerts'])->name('dashboard.alerts');
 
     Route::get('/dashboard/monitoring-temperature', [DashboardController::class, 'monitoring_temp'])->name('dashboard.monitoring.temp');
+    Route::get('/dashboard/monitoring-temperature/chart/data', [DashboardController::class, 'get_chart_monitoring_temp'])->name('dashboard.monitoring.temp.chart');
     
 });
 Route::resource('area', AreaController::class)->middleware(['auth', 'verified']);
