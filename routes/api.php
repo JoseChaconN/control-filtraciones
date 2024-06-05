@@ -18,7 +18,7 @@ Route::prefix('v1')->group(function () {
 
 Route::prefix('v1')->middleware([AuthenticateDevice::class])->group(function () {
     Route::apiResource('flow-data', FlowDataController::class);
-    Route::apiResource('flow-data-temp', TempDataController::class);
+    Route::apiResource('data-load-temp', TempDataController::class);
 });
 Route::prefix('v1')->get('/test', function (Request $request) {
     return response()->json(['message' => 'Unauthenticated'], 403);
