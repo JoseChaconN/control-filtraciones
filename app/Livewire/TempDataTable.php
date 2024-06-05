@@ -34,7 +34,7 @@ class TempDataTable extends Component
                 $query->where('device_id', $this->deviceFilter);
             })->when($this->dateFrom && $this->dateTo, function ($query) {
                 $query->whereBetween('created_at', [$this->dateFrom, $this->dateTo]);
-            });
+            })->orderBy('created_at', 'desc');
 
         $tempData = $query->paginate(10);
 
@@ -61,7 +61,7 @@ class TempDataTable extends Component
             })->when($this->dateFrom && $this->dateTo, function ($data) {
                 $data->whereBetween('created_at', [$this->dateFrom, $this->dateTo]);
             })
-            ->orderBy('date');
+            ->orderBy('created_at', 'desc');
             #->paginate(100);
 
         $result = [
