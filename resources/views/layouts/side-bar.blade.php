@@ -5,11 +5,15 @@
                 <div class="sb-sidenav-menu-heading">Tableros</div>
                 <a class="nav-link" href="{{ route('dashboard.monitoring') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Monitor
+                    Monitor Flujo
                 </a>
                 <a class="nav-link" href="{{ route('dashboard.alerts') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Alertas
+                    Alertas Flujo
+                </a>
+                <a class="nav-link" href="{{ route('dashboard.monitoring.temp') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Monitor Temperatura
                 </a>
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link" href="{{ route('area.index') }}">

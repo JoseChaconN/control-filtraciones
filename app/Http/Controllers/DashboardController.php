@@ -22,4 +22,11 @@ class DashboardController extends Controller
 
         return view('dashboard.alert', $data);
     }
+
+    public function monitoring_temp()
+    {
+        #$data['flowData'] = FlowData::with(['area', 'device'])->get();
+
+        return view('dashboard.monitoring-temp');
+    }
 }
