@@ -3,8 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-8">
-                    <i class="fas fa-table me-1"></i>
-                    Áreas
+                    <h3><i class="fas fa-table me-1"></i>Sectores</h3>
                 </div>
                 <div class="col-md-4 text-end">
                     <a class="btn btn-success btn-sm" href="{{ route('area.create') }}">Área Nueva</a>

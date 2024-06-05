@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Device;
-use App\Models\FlowData;
+use App\Models\TempData;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class FlowDataController extends Controller
+class TempDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,6 @@ class FlowDataController extends Controller
     public function index()
     {
         //
-        $data = FlowData::all();
-        return response()->json(['data' => 1], 200);
     }
 
     /**
@@ -25,7 +23,6 @@ class FlowDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
         // Validar la solicitud
         $validatedData = $request->validate([
             'area_id' => 'required',
@@ -34,16 +31,17 @@ class FlowDataController extends Controller
             #'volumen' => 'required|numeric',
             // Agrega aquí las reglas de validación para otros campos
         ]);
-        $validatedData['volumen'] = $request->input('volumen');
-        $validatedData['flow_sensor'] = $request->input('flow_sensor');
+        $validatedData['temperature'] = $request->input('temp');
+        $validatedData['pressure'] = $request->input('pressure');
+        $validatedData['humidity'] = $request->input('humidity');
         // Crear un nuevo registro en FlowData
-        $flowData = FlowData::create($validatedData);
+        $flowData = TempData::create($validatedData);
 
         $device = Device::findOrFail($request->input('device_id'));
         $device->update(['last_connection' => Carbon::now()]);
         // Retornar una respuesta
         return response()->json([
-            'message' => 'FlowData created successfully'#,
+            'message' => 'TempData created successfully'#,
             #'data' => $flowData
         ], 201);
     }

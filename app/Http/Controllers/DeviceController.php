@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Support\Str;
+
 
 class DeviceController extends Controller
 {
@@ -65,7 +67,7 @@ class DeviceController extends Controller
 
                 // Incluir 'description' en los datos a guardar
                 $validatedData['description'] = $request->input('description');
-
+                $validatedData['token']=Str::random(60);
                 // Crear una nueva dispositivo con los datos validados
                 $device = Device::create($validatedData);
                 // Registrar la actividad manualmente

@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Sanctum\HasApiTokens;
 
 class Device extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasApiTokens;
     protected $guarded = [];
 
     public function area()
@@ -22,5 +23,9 @@ class Device extends Model
     public function flowData()
     {
         return $this->hasMany(FlowData::class);
+    }
+    public function tempData()
+    {
+        return $this->hasMany(TempData::class);
     }
 }

@@ -11,8 +11,15 @@ class DashboardController extends Controller
 
     public function monitoring()
     {
-        $data['flowData'] = FlowData::with(['area', 'device'])->get();
+        #$data['flowData'] = FlowData::with(['area', 'device'])->get();
 
-        return view('dashboard.monitoring', $data);
+        return view('dashboard.monitoring');
+    }
+
+    public function alerts()
+    {
+        $data['alertsData'] = FlowData::with(['area', 'device'])->get();
+
+        return view('dashboard.alert', $data);
     }
 }

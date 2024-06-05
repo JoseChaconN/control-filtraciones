@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/monitoring', [DashboardController::class, 'monitoring'])->name('dashboard.monitoring');
+    Route::get('/dashboard/alerts', [DashboardController::class, 'alerts'])->name('dashboard.alerts');
+    
 });
 Route::resource('area', AreaController::class)->middleware(['auth', 'verified']);
 Route::resource('device', DeviceController::class)->middleware(['auth', 'verified']);

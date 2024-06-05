@@ -9,8 +9,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-8">
-                    <i class="fas fa-table me-1"></i>
-                    Alertas
+                    <h3><i class="fas fa-table me-1"></i>Alertas</h3>
                 </div>
                 <div class="col-md-4 text-end">
                     <a class="btn btn-success btn-sm" href="{{ route('alert.create') }}">Alerta Nueva</a>

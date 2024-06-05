@@ -24,6 +24,7 @@ return new class extends Migration
             $table->decimal('peak_flow', 10, 4)->nullable();
             $table->decimal('minimum_flow', 10, 4)->nullable();
             $table->dateTime('last_connection')->nullable();
+            $table->text('token')->nullable();
         });
     }
 

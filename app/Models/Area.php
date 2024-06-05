@@ -26,5 +26,9 @@ class Area extends Model
     {
         return $this->hasMany(FlowData::class);
     }
+    public function tempData()
+    {
+        return $this->hasMany(TempData::class);
+    }
 
 }
