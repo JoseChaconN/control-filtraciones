@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\FlowDataController;
+use App\Http\Controllers\Api\V1\TempDataController;
 use App\Http\Middleware\AuthenticateDevice;
 
 Route::prefix('v1')->middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -17,6 +18,7 @@ Route::prefix('v1')->group(function () {
 
 Route::prefix('v1')->middleware([AuthenticateDevice::class])->group(function () {
     Route::apiResource('flow-data', FlowDataController::class);
+    Route::apiResource('flow-data-temp', TempDataController::class);
 });
 Route::prefix('v1')->get('/test', function (Request $request) {
     return response()->json(['message' => 'Unauthenticated'], 403);
