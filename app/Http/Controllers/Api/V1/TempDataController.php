@@ -31,7 +31,7 @@ class TempDataController extends Controller
             #'volumen' => 'required|numeric',
             // Agrega aquí las reglas de validación para otros campos
         ]);
-        $validatedData['temperature'] = $request->input('temp');
+        $validatedData['temperature'] = $request->input('temperature');
         $validatedData['pressure'] = $request->input('pressure');
         $validatedData['humidity'] = $request->input('humidity');
         // Crear un nuevo registro en FlowData
