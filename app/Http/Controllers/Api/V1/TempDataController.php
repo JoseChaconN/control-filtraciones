@@ -35,7 +35,7 @@ class TempDataController extends Controller
         $validatedData['pressure'] = $request->input('pressure');
         $validatedData['humidity'] = $request->input('humidity');
         // Crear un nuevo registro en FlowData
-        $flowData = TempData::create($validatedData);
+        $tempData = TempData::create($validatedData);
 
         $device = Device::findOrFail($request->input('device_id'));
         $device->update(['last_connection' => Carbon::now()]);
