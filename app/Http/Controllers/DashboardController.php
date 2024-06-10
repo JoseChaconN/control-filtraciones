@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use App\Models\FlowData;
-use App\Models\TempData;
 use Illuminate\Http\Request;
+use App\Helpers\DeviceHelper;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -23,33 +25,23 @@ class DashboardController extends Controller
 
         return view('dashboard.alert', $data);
     }
-
-    public function monitoring_temp()
+    public function devices()
     {
-        #$data['flowData'] = FlowData::with(['area', 'device'])->get();
-
-        return view('dashboard.monitoring-temp');
+        $data['devices'] = Device::with(['area', 'latestFlowData'])->get();
+        return view('dashboard.devices', $data);
     }
-    public function get_chart_monitoring_temp(Request $request)
+    public function device_detail(Request $request,Device $device)
     {
-        #$data['flowData'] = FlowData::with(['area', 'device'])->get();
-
-        #return view('dashboard.monitoring-temp');
-        $query = TempData::query();
-        
-        if ($request->has('dateFrom') && $request->has('dateTo')) {
-            $query->whereBetween('created_at', [$request->input('dateFrom'), $request->input('dateTo')]);
+        $data['flowData'] = [];
+        if ($request->has(['start_date', 'end_date'])) {
+            $query = $device->flowData()->latest();
+            $startDate = Carbon::parse($request->start_date)->startOfDay();
+            $endDate = Carbon::parse($request->end_date)->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+            $data['flowData'] = $query->get();
         }
-
-        $data = $query->orderBy('created_at', 'desc')->get(['created_at', 'temperature']);
-
-        $response = [
-            'labels' => $data->pluck('created_at')->map(function ($date) {
-                return $date->format('Y-m-d H:i:s');
-            }),
-            'values' => $data->pluck('temperature')
-        ];
-
-        return response()->json($response);
+        
+        $data['device'] = $device;
+        return view('dashboard.device-detail', $data);
     }
 }

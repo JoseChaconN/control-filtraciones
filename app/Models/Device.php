@@ -24,8 +24,9 @@ class Device extends Model
     {
         return $this->hasMany(FlowData::class);
     }
-    public function tempData()
+    // Relación para obtener el último registro de FlowData
+    public function latestFlowData()
     {
-        return $this->hasMany(TempData::class);
+        return $this->hasOne(FlowData::class)->orderBy('created_at', 'desc');
     }
 }

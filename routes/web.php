@@ -24,9 +24,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/monitoring', [DashboardController::class, 'monitoring'])->name('dashboard.monitoring');
     Route::get('/dashboard/alerts', [DashboardController::class, 'alerts'])->name('dashboard.alerts');
 
-    Route::get('/dashboard/monitoring-temperature', [DashboardController::class, 'monitoring_temp'])->name('dashboard.monitoring.temp');
-    Route::get('/dashboard/monitoring-temperature/chart/data', [DashboardController::class, 'get_chart_monitoring_temp'])->name('dashboard.monitoring.temp.chart');
-    
+    Route::get('/dashboard/devices', [DashboardController::class, 'devices'])->name('dashboard.device');
+    Route::get('/dashboard/devices/detail/{device}', [DashboardController::class, 'device_detail'])->name('dashboard.device.detail');
+
 });
 Route::resource('area', AreaController::class)->middleware(['auth', 'verified']);
 Route::resource('device', DeviceController::class)->middleware(['auth', 'verified']);
