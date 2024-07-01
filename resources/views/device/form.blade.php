@@ -75,6 +75,24 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="latitude" name="latitude" type="text" placeholder="Coordenada Latitud" value="{{ old('latitude',$device->latitude) }}" />
+                            <label for="latitude">Coordenada Latitud</label>
+                            @if($errors->has('latitude'))
+                                <span class="text-danger">*{{ $errors->first('latitude') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="longitude" name="longitude" type="text" placeholder="Coordenada longitud" value="{{ old('longitude',$device->longitude) }}" />
+                            <label for="longitude">Coordenada longitud</label>
+                            @if($errors->has('longitude'))
+                                <span class="text-danger">*{{ $errors->first('longitude') }}</span>
+                            @endif
+                        </div>
+                    </div>
                     <div class="col-md-12 mt-3">
                         <div class="form-floating mb-3 mb-md-0">
                             <input class="form-control" id="description" name="description" type="text" placeholder="Descripción" value="{{ old('description',$device->description) }}" />

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('area_id')->nullable();
             $table->string('code', 100)->nullable();
             $table->string('name', 100)->nullable();
+            $table->float('latitude')->nullable();
+            $table->float('longitude')->nullable();
             $table->text('description')->nullable();
             $table->integer('status')->nullable();
             $table->decimal('regular_flow', 10, 4)->nullable();

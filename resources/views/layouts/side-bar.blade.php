@@ -11,10 +11,6 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Alertas Flujo
                 </a>
-                <a class="nav-link" href="{{ route('dashboard.monitoring.temp') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Monitor Temperatura
-                </a>
                 <div class="sb-sidenav-menu-heading">Tableros</div>
                 <a class="nav-link" href="{{ route('dashboard.device') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-mobile-alt"></i></div>
@@ -35,7 +31,7 @@
                         <a class="nav-link" href="{{ route('area.index') }}">Sectores</a>
                         <a class="nav-link" href="{{ route('device.index') }}">Dispositivos</a>
                         <a class="nav-link" href="{{ route('alert.index') }}">Alertas</a>
-                        <a class="nav-link" href="#">Usuarios</a>
+                        <a class="nav-link" href="{{ route('user.index') }}">Usuarios</a>
                     </nav>
                 </div>
             </div>

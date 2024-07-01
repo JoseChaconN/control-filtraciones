@@ -67,6 +67,8 @@ class DeviceController extends Controller
 
                 // Incluir 'description' en los datos a guardar
                 $validatedData['description'] = $request->input('description');
+                $validatedData['latitude'] = $request->input('latitude');
+                $validatedData['longitude'] = $request->input('longitude');
                 $validatedData['token']=Str::random(60);
                 // Crear una nueva dispositivo con los datos validados
                 $device = Device::create($validatedData);

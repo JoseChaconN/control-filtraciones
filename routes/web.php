@@ -5,10 +5,11 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
@@ -31,5 +32,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::resource('area', AreaController::class)->middleware(['auth', 'verified']);
 Route::resource('device', DeviceController::class)->middleware(['auth', 'verified']);
 Route::resource('alert', AlertController::class)->middleware(['auth', 'verified']);
+Route::resource('user', UserController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

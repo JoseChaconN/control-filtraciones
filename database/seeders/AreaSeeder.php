@@ -15,7 +15,8 @@ class AreaSeeder extends Seeder
     {
         //
         $data=[
-            ['code' => 'jardin-norte' , 'name' => 'Zona Norte' , 'description' => 'Jardin ubicado en la zona norte del mall' , 'regular_flow' => 1000 , 'peak_flow' => 2000 , 'minimum_flow' => 500]
+            ['code' => 'zona-rs' , 'name' => 'Zonas riego solar' , 'regular_flow' => 1000 , 'peak_flow' => 2000 , 'minimum_flow' => 500],
+            ['code' => 'zona-pa' , 'name' => 'Zonas Programadores Autonomos' , 'regular_flow' => 1000 , 'peak_flow' => 2000 , 'minimum_flow' => 500],
         ];
         Area::insert($data);
     }
