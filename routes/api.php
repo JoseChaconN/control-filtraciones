@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\FlowDataController;
+use App\Http\Controllers\Api\V1\ReciveDataController;
 use App\Http\Controllers\Api\V1\TempDataController;
 use App\Http\Middleware\AuthenticateDevice;
 
@@ -14,10 +15,11 @@ Route::prefix('v1')->middleware('auth:sanctum')->get('/user', function (Request 
 Route::prefix('v1')->group(function () {
     #Route::apiResource('auth', AuthController::class);
     Route::post('auth/login', [AuthController::class, 'login'])->middleware('throttle:10,1');
+    Route::apiResource('recive-data', ReciveDataController::class);
 });
 
 Route::prefix('v1')->middleware([AuthenticateDevice::class])->group(function () {
-    Route::apiResource('flow-data', FlowDataController::class);
+    Route::apiResource('flow-data', FlowDataController::class);    
 });
 Route::prefix('v1')->get('/test', function (Request $request) {
     return response()->json(['message' => 'Unauthenticated'], 403);
